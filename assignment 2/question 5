@@ -1,0 +1,14 @@
+from sympy import mod_inverse
+
+# Given values
+P = 7  # Plaintext
+e = 3  # Encryption exponent
+N = 33  # Public modulus
+
+# Compute ciphertext
+C = pow(P, e, N)  # Efficient modular exponentiation
+print("Ciphertext (C):", C)
+
+# Compute modular inverse of P mod N
+P_inv = mod_inverse(P, N)
+print("Modular Inverse of P (P^-1 mod N):", P_inv)
