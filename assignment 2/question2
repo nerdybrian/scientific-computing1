@@ -1,0 +1,23 @@
+import sympy as sp
+
+# Define matrix
+A = sp.Matrix([[2, 1], [1, 3]])
+
+# Compute determinant
+det_A = A.det()
+print("Determinant of A:", det_A)
+
+# Compute eigenvalues
+eigenvalues = A.eigenvals()
+print("Eigenvalues of A:", eigenvalues)
+
+# Verify characteristic equation
+λ = sp.Symbol('λ')
+char_eq = A.charpoly(λ).as_expr()
+print("Characteristic Equation:", char_eq)
+
+# Substitute eigenvalues into the characteristic equation to verify
+for ev in eigenvalues.keys():
+    assert char_eq.subs(λ, ev) == 0, "Eigenvalue does not satisfy equation"
+
+print("Eigenvalues satisfy the characteristic equation.")
