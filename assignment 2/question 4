@@ -1,0 +1,28 @@
+import sympy as sp
+
+# Define variable
+x = sp.Symbol('x')
+
+# Define cost function
+C = 5*x**3 - 10*x**2 + 4*x + 3
+
+# Compute first derivative
+C_prime = sp.diff(C, x)
+print("First Derivative:", C_prime)
+
+# Solve for critical points (when derivative is zero)
+critical_points = sp.solve(C_prime, x)
+print("Critical Points:", critical_points)
+
+# Compute second derivative
+C_double_prime = sp.diff(C_prime, x)
+
+# Check if min or max
+for point in critical_points:
+    second_derivative_value = C_double_prime.subs(x, point)
+    if second_derivative_value > 0:
+        print(f"x = {point} is a minimum.")
+    elif second_derivative_value < 0:
+        print(f"x = {point} is a maximum.")
+    else:
+        print(f"x = {point} is a saddle point.")
