@@ -1,0 +1,23 @@
+from sympy import symbols, apart, inverse_laplace_transform, fraction
+
+# Define variables
+s, t = symbols('s t')
+
+# Define H(s)
+H = 1 / (s**2 + 3*s + 2)
+
+# Factor the denominator
+factored_denominator = sp.factor(H.as_numer_denom()[1])
+print("Factored Denominator:", factored_denominator)
+
+# Perform Partial Fraction Decomposition
+H_partial = apart(H)
+print("Partial Fraction:", H_partial)
+
+# Compute Inverse Laplace Transform
+h_t = inverse_laplace_transform(H, s, t)
+print("Inverse Laplace Transform (h(t)):", h_t)
+
+# Find poles (roots of denominator)
+poles = sp.solve(H.as_numer_denom()[1], s)
+print("System Poles:", poles)
