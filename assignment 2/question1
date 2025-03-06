@@ -1,0 +1,28 @@
+import sympy as sp
+
+# Define variable
+x = sp.Symbol('x')
+
+# Define the loss function
+L = 3*x**2 + 2*x - 5
+
+# Compute the first derivative (gradient)
+L_prime = sp.diff(L, x)
+print("Gradient (First Derivative):", L_prime)
+
+# Solve for x when gradient is zero (critical points)
+critical_points = sp.solve(L_prime, x)
+print("Critical Points:", critical_points)
+
+# Compute the second derivative
+L_double_prime = sp.diff(L_prime, x)
+
+# Determine if it's a minimum or maximum
+for point in critical_points:
+    second_derivative_value = L_double_prime.subs(x, point)
+    if second_derivative_value > 0:
+        print(f"x = {point} is a minimum.")
+    elif second_derivative_value < 0:
+        print(f"x = {point} is a maximum.")
+    else:
+        print(f"x = {point} is a saddle point.")
